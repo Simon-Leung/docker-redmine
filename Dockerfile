@@ -46,6 +46,9 @@ RUN apt-get update \
  && gem install --no-document bundler \
  && rm -rf /var/lib/apt/lists/*
 
+RUN gem sources --remove https://rubygems.org/
+RUN gem sources -a https://mirrors.aliyun.com/rubygems/
+
 COPY assets/build/ ${REDMINE_BUILD_ASSETS_DIR}/
 
 RUN bash ${REDMINE_BUILD_ASSETS_DIR}/install.sh
